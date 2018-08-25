@@ -1,16 +1,12 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+
+Route::get('/pidum', 'PidumController@index');
+Route::get('/pidum/{id}/view', 'PidumController@view');
+Route::put('/pidum/{id}/update', 'PidumController@update');
+Route::get('/pidum/{id}/delete', 'PidumController@delete');
+Route::get('/pidum/input', 'PidumController@form');
+Route::post('/pidum/input', 'PidumController@insert');
