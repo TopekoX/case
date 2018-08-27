@@ -10,7 +10,7 @@ class PidumController extends Controller
 {
     public function index()
     {
-      $pidum = Pidum::all();
+      $pidum = Pidum::latest()->paginate(20);
 
       return view('pidum/index', ['pidum' => $pidum]);
     }
@@ -46,7 +46,7 @@ class PidumController extends Controller
         'tanggal_eksekusi' => $req->tanggal_eksekusi
       ]);
 
-      $pidum = Pidum::all();
+      $pidum = Pidum::latest()->paginate(20);
       return view('pidum/index', ['pidum' => $pidum]);
     }
 
@@ -54,7 +54,7 @@ class PidumController extends Controller
     {
       $perkara = Pidum::find($id);
       $perkara->delete();
-      $pidum = Pidum::all();
+      $pidum = Pidum::latest()->paginate(20);
       return view('pidum/index', ['pidum' => $pidum]);
     }
 
@@ -88,7 +88,7 @@ class PidumController extends Controller
         'tanggal_eksekusi' => $req->tanggal_eksekusi
       ]);
 
-      $pidum = Pidum::all();
+      $pidum = Pidum::latest()->paginate(20);
       return view('pidum/index', ['pidum' => $pidum]);
     }
 }

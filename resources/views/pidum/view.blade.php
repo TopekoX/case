@@ -122,6 +122,7 @@
         <div class="col-sm-4">
           <select class="form-control" name="status">
             <option value="penuntutan" @if ($pidum->status == 'penuntutan') selected @endif>Penuntutan</option>
+            <option value="kasasi" @if ($pidum->status == 'kasasi') selected @endif>Kasasi</option>
             <option value="eksekusi" @if ($pidum->status == 'eksekusi') selected @endif>Eksekusi</option>
          </select>
           <span class="error">

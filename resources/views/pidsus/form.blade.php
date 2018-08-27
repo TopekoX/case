@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('title', 'Perkara Pidana Umum')
+@section('title', 'Perkara Pidana Khusus')
 
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Input Perkara</h1>
     </div>
-    <form class="form-horizontal" action="{{ url('/pidum/input') }}" method="post">
+    <form class="form-horizontal" action="{{ url('/pidsus/input') }}" method="post">
       <div class="form-group">
         <label class="control-label col-sm-2">No. Reg. Perkara:</label>
         <div class="col-sm-4">
