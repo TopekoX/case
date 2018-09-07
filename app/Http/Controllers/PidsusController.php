@@ -10,15 +10,28 @@ class PidsusController extends Controller
 {
   public function index()
   {
-    $pidsus = Pidsus::latest()->paginate(20);
+    $pidsus = Pidsus::orderBy('tgl_reg', 'DESC')->paginate(20);
 
     return view('pidsus/index', ['pidsus' => $pidsus]);
   }
 
+  public function list()
+  {
+    $pidsus = Pidsus::orderBy('tgl_reg', 'DESC')->paginate(20);
+
+    return view('pidsus/list', ['pidsus' => $pidsus]);
+  }
+
   public function view(Request $req, $id)
   {
-    $pidsus = Pidsus::find($id);
+    $pidsus = Pidsus::orderBy('tgl_reg', 'DESC')->paginate(20);
     return view('pidsus/view', ['pidsus' => $pidsus]);
+  }
+
+  public function detail(Request $req, $id)
+  {
+    $pidsus = Pidsus::find($id);
+    return view('pidsus/detail', ['pidsus' => $pidsus]);
   }
 
   public function update(Request $req, $id)
@@ -27,6 +40,7 @@ class PidsusController extends Controller
       'no_reg' => 'required|min:3',
       'tgl_reg' => 'required',
       'institusi_penyidik' => 'required',
+      'surat_dakwaan' => 'required',
       'nama_terdakwa' => 'required',
       'status' => 'required'
     ]);
@@ -46,7 +60,7 @@ class PidsusController extends Controller
       'tanggal_eksekusi' => $req->tanggal_eksekusi
     ]);
 
-    $pidsus = Pidsus::latest()->paginate(20);
+    $pidsus = Pidsus::orderBy('tgl_reg', 'DESC')->paginate(20);
     return view('pidsus/index', ['pidsus' => $pidsus]);
   }
 
@@ -54,7 +68,7 @@ class PidsusController extends Controller
   {
     $perkara = Pidsus::find($id);
     $perkara->delete();
-    $pidsus = Pidsus::latest()->paginate(20);
+    $pidsus = Pidsus::orderBy('tgl_reg', 'DESC')->paginate(20);
     return view('pidsus/index', ['pidsus' => $pidsus]);
   }
 
@@ -70,6 +84,7 @@ class PidsusController extends Controller
       'tgl_reg' => 'required',
       'institusi_penyidik' => 'required',
       'nama_terdakwa' => 'required',
+      'surat_dakwaan' => 'required',
       'status' => 'required'
     ]);
 
@@ -88,8 +103,41 @@ class PidsusController extends Controller
       'tanggal_eksekusi' => $req->tanggal_eksekusi
     ]);
 
-    $pidsus = Pidsus::latest()->paginate(20);
+    $pidsus = Pidsus::orderBy('tgl_reg', 'DESC')->paginate(20);
     return view('pidsus/index', ['pidsus' => $pidsus]);
   }
 
+  public function find(Request $req)
+  {
+    $pidsus = Pidsus::where('no_reg', 'like', '%'. $req->cari .'%')
+                        ->orWhere('jenis_perkara', 'like', '%'. $req->cari .'%')
+                        ->orWhere('kasus_posisi', 'like', '%'. $req->cari .'%')
+                        ->orWhere('surat_dakwaan', 'like', '%'. $req->cari .'%')
+                        ->orWhere('institusi_penyidik', 'like', '%'. $req->cari .'%')
+                        ->orWhere('nama_terdakwa', 'like', '%'. $req->cari .'%')
+                        ->orWhere('pasal_yang_dibuktikan', 'like', '%'. $req->cari .'%')
+                        ->orWhere('pasal_yang_didakwakan', 'like', '%'. $req->cari .'%')
+                        ->orWhere('amar_putusan', 'like', '%'. $req->cari .'%')
+                        ->orWhere('status', 'like', '%'. $req->cari .'%')
+                        ->paginate(20);
+
+    return view('pidsus/index', ['pidsus' => $pidsus]);
+  }
+
+  public function cari(Request $req)
+  {
+    $pidsus = Pidsus::where('no_reg', 'like', '%'. $req->cari .'%')
+                        ->orWhere('jenis_perkara', 'like', '%'. $req->cari .'%')
+                        ->orWhere('kasus_posisi', 'like', '%'. $req->cari .'%')
+                        ->orWhere('surat_dakwaan', 'like', '%'. $req->cari .'%')
+                        ->orWhere('institusi_penyidik', 'like', '%'. $req->cari .'%')
+                        ->orWhere('nama_terdakwa', 'like', '%'. $req->cari .'%')
+                        ->orWhere('pasal_yang_dibuktikan', 'like', '%'. $req->cari .'%')
+                        ->orWhere('pasal_yang_didakwakan', 'like', '%'. $req->cari .'%')
+                        ->orWhere('amar_putusan', 'like', '%'. $req->cari .'%')
+                        ->orWhere('status', 'like', '%'. $req->cari .'%')
+                        ->paginate(20);
+
+    return view('pidsus/list', ['pidsus' => $pidsus]);
+  }
 }

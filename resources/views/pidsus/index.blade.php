@@ -13,6 +13,15 @@
               </div>
           </div>
     </div>
+    <div class="col-md-6">
+      <form class="form-horizontal" action="{{ url('/pidsus/find') }}" method="post">
+        <span class="pull-right">
+          <input type="text" class="form-control input-sm" name="cari" align="right" placeholder="Cari...">
+          {{csrf_field()}}
+        </span>
+      </form>
+    </div>
+    <br>
       <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>

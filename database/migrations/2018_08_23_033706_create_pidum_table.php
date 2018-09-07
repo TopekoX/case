@@ -26,7 +26,7 @@ class CreatePidumTable extends Migration
             $table->string('pasal_yang_dibuktikan')->nullable();
             $table->string('pasal_yang_didakwakan')->nullable();
             $table->string('amar_putusan')->nullable();
-            $table->enum('status', ['penuntutan', 'kasasi', 'eksekusi']);
+            $table->enum('status', ['pra_penuntutan', 'penuntutan', 'kasasi', 'eksekusi']);
             $table->date('tanggal_eksekusi')->nullable();
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

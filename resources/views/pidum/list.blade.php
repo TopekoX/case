@@ -1,20 +1,14 @@
-@extends('layouts.master')
+@extends('layouts.template')
 
 @section('title', 'Perkara Pidana Umum')
 
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Pidum</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <a href="{{ url('/pidum/input') }}" class="btn btn-success" role="button" data-toggle="tooltip" title="Input Perkara Baru">
-                  Input Data
-                </a>
-              </div>
-          </div>
+        <h1 class="h2">Perkara Pidana Umum</h1>
+
     </div>
     <div class="col-md-6">
-      <form class="form-horizontal" action="{{ url('/pidum/find') }}" method="post">
+      <form class="form-horizontal" action="{{ url('/sip/pidum/find') }}" method="post">
         <span class="pull-right">
           <input type="text" class="form-control input-sm" name="cari" align="right" placeholder="Cari...">
           {{csrf_field()}}
@@ -43,8 +37,7 @@
                   <td>{{ $p->institusi_penyidik }}</td>
                   <td>{{ $p->status }}</td>
                   <td>
-                    <a href="{{ url('/pidum/'. $p->id .'/view') }}">Ubah</a> &nbsp | &nbsp;
-                    <a href="{{ url('/pidum/'. $p->id .'/delete') }}" onclick="return confirm('Yakin hapus data ini?');">Hapus</a>
+                    <a href="{{ url('/sip/pidum/'. $p->id .'/detail') }}">Detail</a>
                   </td>
                 </tr>
               @endforeach

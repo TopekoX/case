@@ -54,7 +54,7 @@
       <div class="form-group">
         <label class="control-label col-sm-2">Surat Dakwaan</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="surat_dakwaan" value="{{ old('surat_dakwaan') }}">
+          <textarea class="form-control" rows="5" name="surat_dakwaan">{{ old('surat_dakwaan') }}</textarea>
           <span class="error">
             @if ($errors->has('surat_dakwaan'))
               {{ $errors->first('surat_dakwaan') }}
@@ -109,7 +109,7 @@
       <div class="form-group">
         <label class="control-label col-sm-2">Amar Putusan</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="amar_putusan" value="{{ old('amar_putusan') }}">
+          <textarea class="form-control" rows="5" name="amar_putusan">{{ old('amar_putusan') }}</textarea>
           <span class="error">
             @if ($errors->has('amar_putusan'))
               {{ $errors->first('amar_putusan') }}
@@ -121,6 +121,7 @@
         <label class="control-label col-sm-2">Status</label>
         <div class="col-sm-4">
           <select class="form-control" name="status">
+            <option value="pra_penuntutan">Pra Penuntutan</option>
             <option value="penuntutan" selected>Penuntutan</option>
             <option value="kasasi">Kasasi</option>
             <option value="eksekusi">Eksekusi</option>

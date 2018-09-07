@@ -14,7 +14,7 @@ class CreatePidsusTable extends Migration
     public function up()
     {
         Schema::create('pidsus', function (Blueprint $table) {
-          $table->increments('id');
+          $table->increments('id')->nullable;
           $table->string('no_reg');
           $table->string('tgl_reg');
           $table->string('jenis_perkara')->nullable();

@@ -29,13 +29,9 @@
 
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Kejari Palu</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Sistem Informasi Perkara</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <form id="logout-form" action="{{ route('logout') }}" method="POST">
-              @csrf
-              <input type="submit" class="btn btn-danger btn-block" value="Keluar">
-          </form>
         </li>
       </ul>
     </nav>
@@ -46,19 +42,19 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/pidum') }}">
+                <a class="nav-link" href="{{ url('/sip/pidum') }}">
                   <span data-feather="file"></span>
                   Pidum
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/pidsus') }}">
+                <a class="nav-link" href="{{ url('/sip/pidsus') }}">
                   <span data-feather="file"></span>
                   Pidsus
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/datun') }}">
+                <a class="nav-link" href="{{ url('/sip/datun') }}">
                   <span data-feather="file"></span>
                   Datun
                 </a>
